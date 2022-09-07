@@ -5,9 +5,19 @@ services:
     container_name: api-service
     build:
       context: .
-      dockerfile: ./docker/backend/development/Dockerfile
+      dockerfile: ./.docker/backend/development/Dockerfile
     volumes:
       - ./backend:/usr/src/app
     tty: true
     ports:
       - "4000:4000"
+  app:
+    container_name: app-service
+    build:
+      context: .
+      dockerfile: ./.docker/frontend/development/Dockerfile
+    volumes:
+      - ./frontend:/usr/src/app
+    tty: true
+    ports:
+      - "3000:3000"
