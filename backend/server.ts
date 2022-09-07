@@ -1,8 +1,21 @@
-import express from 'express'
+import { ApolloServer } from 'apollo-server'
 
-const app = express()
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+import typeDefs from './schema'
+import Query from './resolver/Query'
+import Mutation from './resolver/Mutation'
+import db from './db'
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers: {
+    Query,
+    Mutation,
+  },
+  context: {
+    db,
+  }
 })
-app.listen(4000)
-console.log('Running a GraphQL API server')
+
+server.listen(4000).then(({ url }) => {
+  console.log(`Running a GraphQL API server ${url}`)
+})
