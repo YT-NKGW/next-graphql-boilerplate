@@ -10,6 +10,8 @@ type MemberArgsType = {
 
 const membersMutation = {
   createMember(_parent: any, args: Omit<MemberArgsType, 'id'>, { db }: { db: DBType }) {
+    if (args.data.name === '') { throw new Error('名前を入力してください') }
+    if (args.data.combatPower <= 0) { throw new Error('戦闘力は0以上にしてください') }
     const id = String(db.members.length + 1)
     const member = { id, ...args.data }
     db.members.push(member)
