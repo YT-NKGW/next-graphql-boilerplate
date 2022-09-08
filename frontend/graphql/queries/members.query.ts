@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client'
 
 export const MEMBERS_QUERY = gql`
-  query {
+  query MemberList {
     members {
       id
       name
@@ -9,11 +9,3 @@ export const MEMBERS_QUERY = gql`
     }
   }
 `
-
-export type MembersData = {
-  members: {
-    id: string
-    name: string
-    combatPower: number
-  }[];
-}

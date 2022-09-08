@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 
-export const CREATE_MEMBER = gql`
+export const MEMBERS_MUTATION = gql`
   mutation CreateMember($name: String!, $combatPower: Int!) {
     createMember(data: { name: $name, combatPower: $combatPower }) {
       id
@@ -8,12 +8,21 @@ export const CREATE_MEMBER = gql`
       combatPower
     }
   }
-`
 
-export type CreateMemberType = {
-  members: {
-    id: string
-    name: string
-    combatPower: number
+  mutation UpdateMember($updateMemberId: ID!, $data: UpdateMemberInput!) {
+    updateMember(id: $updateMemberId, data: $data) {
+      id
+      name
+      combatPower
+    }
   }
-}
+
+  mutation DeleteMember($deleteMemberId: ID!) {
+    deleteMember(id: $deleteMemberId) {
+      id
+      name
+      combatPower
+    }
+  }
+  
+`
