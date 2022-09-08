@@ -10,6 +10,10 @@ export const MEMBERS_QUERY = gql`
   }
 `
 
-export interface MembersData {
-  members: { id: string, name: string, combatPower: number }[];
+export type MembersData = {
+  members: {
+    id: string
+    name: string
+    combatPower: number
+  }[];
 }

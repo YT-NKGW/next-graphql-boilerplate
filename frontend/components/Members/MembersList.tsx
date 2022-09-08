@@ -1,11 +1,11 @@
-import { useQuery } from '@apollo/client';
-import { MEMBERS_QUERY, MembersData } from '../graphql/queries/members.query';
-import { NextPage } from 'next';
+import { useQuery } from '@apollo/client'
+import { MEMBERS_QUERY, MembersData } from '../../graphql/queries/members.query'
+import { NextPage } from 'next'
 
 interface PostsListProps {}
 
 const MembersList: NextPage<PostsListProps> = () => {
-  const { loading, error, data } = useQuery<MembersData>(MEMBERS_QUERY);
+  const { loading, error, data } = useQuery<MembersData>(MEMBERS_QUERY)
 
   if (loading || !data) return <p>Loading...</p>
   if (error) return <p>Error: {JSON.stringify(error)}</p>
