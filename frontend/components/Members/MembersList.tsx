@@ -1,11 +1,13 @@
-import { useQuery } from '@apollo/client'
-import { MEMBERS_QUERY, MembersData } from '../../graphql/queries/members.query'
 import { NextPage } from 'next'
+
+import { useMemberListQuery } from '@/graphql/generated'
+import UpdateMember from './UpdateMember'
+import DeleteMember from './DeleteMember'
 
 interface PostsListProps {}
 
 const MembersList: NextPage<PostsListProps> = () => {
-  const { loading, error, data } = useQuery<MembersData>(MEMBERS_QUERY)
+  const { loading, error, data } = useMemberListQuery()
 
   if (loading || !data) return <p>Loading...</p>
   if (error) return <p>Error: {JSON.stringify(error)}</p>
@@ -22,6 +24,8 @@ const MembersList: NextPage<PostsListProps> = () => {
             {member.name}
             <br />
             戦闘力: {member.combatPower}
+            <UpdateMember memberProps={{ updateMemberId: member.id, name: member.name, combatPower: member.combatPower }} />
+            <DeleteMember deleteMemberId={member.id} />
           </li>
         );
       })}

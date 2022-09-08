@@ -2,13 +2,19 @@ import { useState } from 'react'
 import { NextPage } from 'next'
 
 import { MEMBERS_QUERY } from '../../graphql/queries/members.query'
-import { useCreateMemberMutation } from '@/graphql/generated'
+import { useUpdateMemberMutation } from '@/graphql/generated'
 
-interface PostsListProps {}
+type PostsListProps = {
+  memberProps: {
+    updateMemberId: string
+    name: string
+    combatPower: number
+  }
+}
 
-const CreateMember: NextPage<PostsListProps> = () => {
-  const [member, setMember] = useState({ name: '', combatPower: 1 })
-  const [createMember, { error }] = useCreateMemberMutation({
+const UpdateMember: NextPage<PostsListProps> = ({ memberProps }) => {
+  const [member, setMember] = useState({ name: memberProps.name, combatPower: memberProps.combatPower })
+  const [updateMember, { error }] = useUpdateMemberMutation({
     refetchQueries: [{ query: MEMBERS_QUERY }],
     errorPolicy: 'all'
   })
@@ -22,8 +28,15 @@ const CreateMember: NextPage<PostsListProps> = () => {
   }
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const { data } = await createMember({ variables: { name: member.name, combatPower: member.combatPower } })
-    if (data) { setMember({ name: '', combatPower: 0 }) }
+    await updateMember({
+      variables: {
+        updateMemberId: memberProps.updateMemberId,
+        data: {
+          name: member.name,
+          combatPower: member.combatPower
+        }
+      }
+    })
   }
 
   return (
@@ -36,10 +49,10 @@ const CreateMember: NextPage<PostsListProps> = () => {
         <div>
           戦闘力: <input type="number" name='combatPower' value={member.combatPower} min='1' onChange={(e) => handleCombatPowerChange(e)} />
         </div>
-        <button type='submit'>作成</button>
+        <button type='submit'>更新</button>
       </form>
     </>
   );
 };
 
-export default CreateMember
+export default UpdateMember
