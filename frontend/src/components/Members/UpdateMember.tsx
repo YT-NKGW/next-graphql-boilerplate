@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { NextPage } from 'next'
 
-import { MEMBERS_QUERY } from '../../graphql/queries/members.query'
+import { MEMBERS_QUERY } from '@/graphql/queries/members.query'
 import { useUpdateMemberMutation } from '@/graphql/generated'
 
 type PostsListProps = {
