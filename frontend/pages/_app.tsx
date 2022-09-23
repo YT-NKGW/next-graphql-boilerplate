@@ -9,12 +9,10 @@ const client = new ApolloClient({
   cache,
 })
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
       <Component {...pageProps} />
     </ApolloProvider>
   )
 }
-
-export default MyApp
