@@ -6,11 +6,8 @@ COPY ./frontend/package*.json .
 
 RUN npm install
 
-COPY ./frontend/components ./components
-COPY ./frontend/graphql ./graphql
-COPY ./frontend/pages ./pages
+COPY ./frontend/src ./src
 COPY ./frontend/public ./public
-COPY ./frontend/styles ./styles
 COPY ./frontend/.eslintrc.json ./.eslintrc.json
 COPY ./frontend/codegen.yml ./codegen.yml
 COPY ./frontend/next.config.js ./next.config.js
