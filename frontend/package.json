@@ -12,7 +12,9 @@
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "graphql": "^16.6.0",
+    "iconoir-react": "^5.3.1",
     "next": "12.2.5",
+    "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
