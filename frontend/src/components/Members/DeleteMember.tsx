@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import { BiTrash } from 'react-icons/bi'
 
 import { MEMBERS_QUERY } from '@/graphql/queries/members.query'
 import { useDeleteMemberMutation } from '@/graphql/generated'
@@ -19,12 +20,13 @@ const DeleteMember: NextPage<PostsListProps> = ({ deleteMemberId }) => {
 
   return (
     <>
-      { error && <p>{error.message}</p> }
+    <BiTrash />
+      {/* { error && <p>{error.message}</p> }
       <form onSubmit={(e) => handleSubmit(e)}>
         <button type='submit'>削除</button>
-      </form>
+      </form> */}
     </>
-  );
-};
+  )
+}
 
 export default DeleteMember

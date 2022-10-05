@@ -15,12 +15,12 @@ const Home: NextPage = () => {
       </Head>
       <Layout>
         <div>
-          <h2 className='text-xl text-center font-bold'>
+          <h2 className='text-xl text-center font-bold mb-4'>
             Z-senshi List
           </h2>
         </div>
-        <div>
-          <MembersList />
+        <MembersList />
+        <div className='sticky bottom-0'>
           <CreateMember />
         </div>
       </Layout>

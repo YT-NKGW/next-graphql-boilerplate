@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { NextPage } from 'next'
+import { BiEditAlt } from 'react-icons/bi'
 
 import { MEMBERS_QUERY } from '@/graphql/queries/members.query'
 import { useUpdateMemberMutation } from '@/graphql/generated'
@@ -41,7 +42,8 @@ const UpdateMember: NextPage<PostsListProps> = ({ memberProps }) => {
 
   return (
     <>
-      { error && <p>{error.message}</p> }
+    <BiEditAlt />
+      {/* { error && <p>{error.message}</p> }
       <form onSubmit={(e) => handleSubmit(e)}>
         <div>
           名前: <input type="text" name='name' value={member.name} required onChange={(e) => handleNameChange(e)} />
@@ -50,7 +52,7 @@ const UpdateMember: NextPage<PostsListProps> = ({ memberProps }) => {
           戦闘力: <input type="number" name='combatPower' value={member.combatPower} min='1' onChange={(e) => handleCombatPowerChange(e)} />
         </div>
         <button type='submit'>更新</button>
-      </form>
+      </form> */}
     </>
   );
 };
