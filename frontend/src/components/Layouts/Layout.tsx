@@ -12,7 +12,7 @@ const Layout: NextPage<PostsListProps> = ({ children }) => {
   return (
     <>
       <Header />
-      <main className='flex justify-center content-center h-screen w-full py-4'>
+      <main className='flex justify-center content-center h-screen w-full mb-24 py-4'>
         <div className='flex flex-col w-full max-w-3xl'>
           {children}
         </div>

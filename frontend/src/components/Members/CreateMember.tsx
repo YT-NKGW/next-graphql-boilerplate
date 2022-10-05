@@ -27,7 +27,7 @@ const CreateMember: NextPage<PostsListProps> = () => {
   }
 
   return (
-    <>
+    <div className='flex flex-row bg-white p-2'>
       { error && <p>{error.message}</p> }
       <form onSubmit={(e) => handleSubmit(e)}>
         <div>
@@ -38,7 +38,7 @@ const CreateMember: NextPage<PostsListProps> = () => {
         </div>
         <button type='submit'>作成</button>
       </form>
-    </>
+    </div>
   );
 };
 
