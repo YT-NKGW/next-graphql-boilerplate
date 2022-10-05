@@ -2,11 +2,11 @@ import type { DBType } from '../../db'
 
 const membersQuery = {
   members(_parent: any, args: { query: string }, { db }: { db: DBType }) {
-    if (!args.query) { return db.members }
+    const sortedMember = db.members.sort((a, b) => (a.combatPower < b.combatPower) ? 1 : -1)
 
-    return db.members.filter((member) => {
-      return member.name.toLowerCase().includes(args.query.toLowerCase())
-    })
+    if (!args.query) { return sortedMember }
+
+    return sortedMember.filter((member) => member.name.toLowerCase().includes(args.query.toLowerCase()))
   }
 }
 
